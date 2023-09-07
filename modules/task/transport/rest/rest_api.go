@@ -1,11 +1,12 @@
 package rest
 
 import (
-	"github.com/gin-gonic/gin"
 	"net/http"
 	"simple-clean-architecture-demo/common"
 	"simple-clean-architecture-demo/modules/task"
 	"simple-clean-architecture-demo/modules/task/entity"
+
+	"github.com/gin-gonic/gin"
 )
 
 type api struct {
@@ -16,7 +17,7 @@ func NewAPI(biz task.Business) *api {
 	return &api{biz: biz}
 }
 
-func (api *api) CreateTaskHdl() gin.HandlerFunc {
+func (api *api) CreateTask() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var data entity.TaskCreationData
 
@@ -34,7 +35,7 @@ func (api *api) CreateTaskHdl() gin.HandlerFunc {
 	}
 }
 
-func (api *api) ListTaskHdl() gin.HandlerFunc {
+func (api *api) ListTask() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var requestData struct {
 			entity.Filter
@@ -61,7 +62,7 @@ func (api *api) ListTaskHdl() gin.HandlerFunc {
 	}
 }
 
-func (api *api) GetTaskHdl() gin.HandlerFunc {
+func (api *api) GetTask() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		id := c.Param("id")
 
@@ -76,7 +77,7 @@ func (api *api) GetTaskHdl() gin.HandlerFunc {
 	}
 }
 
-func (api *api) UpdateTaskHdl() gin.HandlerFunc {
+func (api *api) UpdateTask() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		id := c.Param("id")
 
@@ -98,7 +99,7 @@ func (api *api) UpdateTaskHdl() gin.HandlerFunc {
 	}
 }
 
-func (api *api) DeleteTaskHdl() gin.HandlerFunc {
+func (api *api) DeleteTask() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		id := c.Param("id")
 

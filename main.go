@@ -1,11 +1,12 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
 	"log"
 	"simple-clean-architecture-demo/modules/task/business"
 	"simple-clean-architecture-demo/modules/task/repository/inmem"
 	"simple-clean-architecture-demo/modules/task/transport/rest"
+
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
@@ -18,11 +19,11 @@ func main() {
 	{
 		tasks := v1.Group("/tasks")
 		{
-			tasks.POST("", apiService.CreateTaskHdl())
-			tasks.GET("", apiService.ListTaskHdl())
-			tasks.GET("/:id", apiService.GetTaskHdl())
-			tasks.PATCH("/:id", apiService.UpdateTaskHdl())
-			tasks.DELETE("/:id", apiService.DeleteTaskHdl())
+			tasks.POST("", apiService.CreateTask())
+			tasks.GET("", apiService.ListTask())
+			tasks.GET("/:id", apiService.GetTask())
+			tasks.PATCH("/:id", apiService.UpdateTask())
+			tasks.DELETE("/:id", apiService.DeleteTask())
 		}
 	}
 
